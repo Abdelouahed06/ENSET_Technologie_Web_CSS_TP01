@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Logo */
+        .navbar .logo img {
+            width: 90px;
+        }
+
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            align-items: center;
+            padding: 5px;
+        }
+
+        .search-container input[type="text"] {
+            border-radius: 5px;
+            border: 1px solid rgb(255, 255, 255);
+            background: none;
+            color: #fff;
+            outline: none;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .search-container button {
+            height: 30px;
+            border-radius: 3px;
+            border: 1px solid rgb(255, 255, 255);
+            padding: 5px;
+            background: #181818;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #585858;
+        }
+
+        /* Burger Icon */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links, .search-container {
+                display: none;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%; /* Full width on mobile */
+                background-color: #333;
+                position: absolute;
+                top: 35px;
+                left: 0;
+                padding: 10px 0;
+            }
+
+            .nav-links.show{
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 10px;
+                text-align: center;
+                width: 100%; /* Full width for each link */
+            }
+
+            /* Search container placed below nav links */
+            .search-container {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+                background-color: #e20404;
+            }
+
+            .burger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <!-- Nav Links (only one set) -->
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#services">Servces</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Search Bar (Mobile position is controlled by CSS) -->
+        <div class="search-container" id="searchContainer">
+            <input type="text" placeholder="Search...">
+            <button>
+                🔍
+            </button>
+        </div>
+
+        <!-- Burger Icon -->
+        <div class="burger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
